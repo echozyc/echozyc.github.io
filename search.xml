@@ -19,7 +19,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>React Hook</title>
+    <title>React Hook conclusion</title>
     <url>/2020/09/04/hello-world2/</url>
     <content><![CDATA[<p>Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性</p>
 <h2 id="Hook-和函数组件"><a href="#Hook-和函数组件" class="headerlink" title="Hook 和函数组件"></a>Hook 和函数组件</h2><p>__Hook 是什么__？ Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，useState 是允许你在 React 函数组件中添加 state 的 Hook。稍后我们将学习其他 Hook。</p>
