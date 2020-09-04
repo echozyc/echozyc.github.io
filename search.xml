@@ -57,4 +57,9 @@
 <p><strong>useEffect【异步】</strong><br>useEffect会在渲染的内容更新到DOM上后执行,不会阻塞DOM的更新<br><strong>useLayoutEffect【同步】</strong><br>useLayoutEffect会在渲染的内容更新到DOM上之前进行,会阻塞DOM的更新</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>React Recoil</title>
+    <url>/2020/09/04/reactRecoil/</url>
+    <content><![CDATA[<h2 id="Recoil-Facebook-官方-React-状态管理器"><a href="#Recoil-Facebook-官方-React-状态管理器" class="headerlink" title="Recoil  Facebook 官方 React 状态管理器"></a>Recoil  Facebook 官方 React 状态管理器</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">useRecoilValue(state)</span><br><span class="line">useRecoilState(state)</span><br><span class="line">useSetRecoilState(state)</span><br><span class="line">useResetRecoilState(state)</span><br><span class="line">useRecoilValueLoadable(state)</span><br><span class="line">useRecoilStateLoadable(state)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>
