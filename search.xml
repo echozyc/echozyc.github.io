@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>GIT Operation</title>
     <url>/2020/09/08/git/</url>
-    <content><![CDATA[<h2 id="GIT-Operation"><a href="#GIT-Operation" class="headerlink" title="GIT Operation"></a>GIT Operation</h2><h3 id="git流程图"><a href="#git流程图" class="headerlink" title="git流程图"></a>git流程图</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/HnUd56VHiaf2n6mRsG2KYGs1gic9X1aajANyCibZghNX0BMtCyibdW874VDJQNB9lx1DrSkZAN6o6m9DMM7sQsbN7g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="avatar"></p>
+    <content><![CDATA[<h4 id="git流程图"><a href="#git流程图" class="headerlink" title="git流程图"></a>git流程图</h4><p><img src="/image/640.png" alt="avatar"></p>
 <ul>
 <li>Workspace 工作区</li>
 <li>Staging/Index：暂存区</li>
