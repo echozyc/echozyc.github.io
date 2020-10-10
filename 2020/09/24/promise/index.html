@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>promise  .all()  .race()  .allSettled() - zhaoyingchen blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="echozyc,"> 
+    <meta name="description" content="Promise.all()Promise.all()只有在接受的所有promise实例全部是fulfilled才会走Promise.all([p1,p2,p3]).then()方法，只要有其中一个p,"> 
+    <meta name="author" content="zhaoyingchen"> 
+    <link rel="alternative" href="atom.xml" title="zhaoyingchen blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">zhaoyingchen blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">promise  .all()  .race()  .allSettled()</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">promise  .all()  .race()  .allSettled()</h1>
+        <div class="stuff">
+            <span>九月 24, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h4 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h4><p>Promise.all()只有在接受的所有promise实例全部是fulfilled才会走<br>Promise.all([p1,p2,p3]).then()方法，只要有其中一个promise实例是rejected，<br>就会直接走catch方法，并且catch中只会返回第一个变成rejected的promise的错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>const p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  resolve(&#39;hello&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p2报错&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p3 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p3报错&#39;)<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>Promise.all([p1, p2, p3])<br>.then(result &#x3D;&gt; console.log(result))<br>.catch(e &#x3D;&gt; console.log(e));<br>&#x2F;&#x2F; Error: p2报错<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Promise-allSettled"><a href="#Promise-allSettled" class="headerlink" title="Promise.allSettled()"></a>Promise.allSettled()</h4><p>接受的结果与入参时的promise实例一一对应，且结果的每一项都是一个对象，告诉你结果和值，<br>对象内都有一个属性叫“status”，用来明确知道对应的这个promise实例的状态（fulfilled或rejected），<br>fulfilled时，对象有value属性，rejected时有reason属性，对应两种状态的返回值。</p>
+<p>重要的一点是，他不论接受入参的promise本身的状态，会返回所有promise的结果，<br>但这一点Promise.all做不到，如果你需要知道所有入参的异步操作的所有结果，<br>或者需要知道这些异步操作是否全部结束，应该使用promise.allSettled()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>const resolved &#x3D; Promise.resolve(42);<br>const rejected &#x3D; Promise.reject(-1);<br><br>const allSettledPromise &#x3D; Promise.allSettled([resolved, rejected]);<br><br>allSettledPromise.then(function (results) &#123;<br>  console.log(results);<br>&#125;);<br>&#x2F;&#x2F; [<br>&#x2F;&#x2F;    &#123; status: &#39;fulfilled&#39;, value: 42 &#125;,<br>&#x2F;&#x2F;    &#123; status: &#39;rejected&#39;, reason: -1 &#125;<br>&#x2F;&#x2F; ]<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h4><p>Promise.race([p1, p2, p3])里面哪个结果获得的快，<br>就返回那个结果，不管结果本身是成功状态还是失败状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>let p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    resolve(&#39;success&#39;)<br>  &#125;,1000)<br>&#125;)<br><br>let p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    reject(&#39;failed&#39;)<br>  &#125;, 500)<br>&#125;)<br><br>Promise.race([p1, p2]).then((result) &#x3D;&gt; &#123;<br>  console.log(result)<br>&#125;).catch((error) &#x3D;&gt; &#123;<br>  console.log(error)  &#x2F;&#x2F; 打开的是 &#39;failed&#39;<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

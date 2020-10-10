@@ -173,6 +173,76 @@
 ]]></content>
   </entry>
   <entry>
+    <title>promise  .all()  .race()  .allSettled()</title>
+    <url>/2020/09/24/promise/</url>
+    <content><![CDATA[<h4 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h4><p>Promise.all()只有在接受的所有promise实例全部是fulfilled才会走<br>Promise.all([p1,p2,p3]).then()方法，只要有其中一个promise实例是rejected，<br>就会直接走catch方法，并且catch中只会返回第一个变成rejected的promise的错误</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  resolve(&#39;hello&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p2报错&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p3 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p3报错&#39;)<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>Promise.all([p1, p2, p3])<br>.then(result &#x3D;&gt; console.log(result))<br>.catch(e &#x3D;&gt; console.log(e));<br>&#x2F;&#x2F; Error: p2报错<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Promise-allSettled"><a href="#Promise-allSettled" class="headerlink" title="Promise.allSettled()"></a>Promise.allSettled()</h4><p>接受的结果与入参时的promise实例一一对应，且结果的每一项都是一个对象，告诉你结果和值，<br>对象内都有一个属性叫“status”，用来明确知道对应的这个promise实例的状态（fulfilled或rejected），<br>fulfilled时，对象有value属性，rejected时有reason属性，对应两种状态的返回值。</p>
+<p>重要的一点是，他不论接受入参的promise本身的状态，会返回所有promise的结果，<br>但这一点Promise.all做不到，如果你需要知道所有入参的异步操作的所有结果，<br>或者需要知道这些异步操作是否全部结束，应该使用promise.allSettled()</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const resolved &#x3D; Promise.resolve(42);<br>const rejected &#x3D; Promise.reject(-1);<br><br>const allSettledPromise &#x3D; Promise.allSettled([resolved, rejected]);<br><br>allSettledPromise.then(function (results) &#123;<br>  console.log(results);<br>&#125;);<br>&#x2F;&#x2F; [<br>&#x2F;&#x2F;    &#123; status: &#39;fulfilled&#39;, value: 42 &#125;,<br>&#x2F;&#x2F;    &#123; status: &#39;rejected&#39;, reason: -1 &#125;<br>&#x2F;&#x2F; ]<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h4><p>Promise.race([p1, p2, p3])里面哪个结果获得的快，<br>就返回那个结果，不管结果本身是成功状态还是失败状态。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>let p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    resolve(&#39;success&#39;)<br>  &#125;,1000)<br>&#125;)<br><br>let p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    reject(&#39;failed&#39;)<br>  &#125;, 500)<br>&#125;)<br><br>Promise.race([p1, p2]).then((result) &#x3D;&gt; &#123;<br>  console.log(result)<br>&#125;).catch((error) &#x3D;&gt; &#123;<br>  console.log(error)  &#x2F;&#x2F; 打开的是 &#39;failed&#39;<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux command</title>
+    <url>/2020/09/15/linux/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pwd</td>
+<td>显示当前目录</td>
+</tr>
+<tr>
+<td align="left">cd</td>
+<td>改变所在目录</td>
+</tr>
+<tr>
+<td align="left">touch</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td align="left">rm</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td align="left">vi</td>
+<td>编辑文件</td>
+</tr>
+<tr>
+<td align="left">ls</td>
+<td>查看目录下的内容</td>
+</tr>
+<tr>
+<td align="left">cat</td>
+<td>显示文件的内容</td>
+</tr>
+<tr>
+<td align="left">mv</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td align="left">rmdir</td>
+<td>删除目录</td>
+</tr>
+</tbody></table>
+<h4 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>print working directory(打印工作目录)<br>输入pwd命令，Linux会输出当前目录<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>cd &#x2F;      转到根目录中 <br>cd ~     转到&#x2F;home&#x2F;user用户目录下 <br>cd &#x2F;usr 转到根目录下的usr目录中-------------绝对路径 <br>cd test 转到当前目录下的test子目录中-------相对路径<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h4><p>ls命令用来查看目录的内容</p>
+]]></content>
+  </entry>
+  <entry>
     <title>React Recoil</title>
     <url>/2020/09/04/reactRecoil/</url>
     <content><![CDATA[<h3 id="Recoil-简单总结"><a href="#Recoil-简单总结" class="headerlink" title="Recoil 简单总结"></a><a href="https://recoiljs.org/docs/introduction/motivation">Recoil</a> 简单总结</h3><p>(Facebook 官方 React 状态管理器 )解决问题： 跨组件状态共享</p>
