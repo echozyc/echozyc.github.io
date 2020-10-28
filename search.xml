@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS accuracy</title>
+    <url>/2020/10/28/ac/</url>
+    <content><![CDATA[<h3 id="js中进行浮点数运算时容易出现精度问题"><a href="#js中进行浮点数运算时容易出现精度问题" class="headerlink" title="js中进行浮点数运算时容易出现精度问题"></a>js中进行浮点数运算时容易出现精度问题</h3><h4 id="1-除法函数"><a href="#1-除法函数" class="headerlink" title="1 除法函数"></a>1 除法函数</h4><p>//说明：javascript的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。<br>//调用：accDiv(arg1,arg2)<br>//返回值：arg1除以arg2的精确结果 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">function accDiv(arg1,arg2)&#123; <br>    var t1&#x3D;0,t2&#x3D;0,r1,r2; <br>    try&#123;t1&#x3D;arg1.toString().split(&quot;.&quot;)[1].length&#125;catch(e)&#123;&#125;   &#x2F;&#x2F;--小数点后的长度<br>    try&#123;t2&#x3D;arg2.toString().split(&quot;.&quot;)[1].length&#125;catch(e)&#123;&#125;  &#x2F;&#x2F;--小数点后的长度<br>    with(Math)&#123; <br>      r1&#x3D;Number(arg1.toString().replace(&quot;.&quot;,&quot;&quot;))  &#x2F;&#x2F;--去除小数点变整数<br>      r2&#x3D;Number(arg2.toString().replace(&quot;.&quot;,&quot;&quot;))  &#x2F;&#x2F;--去除小数点变整数<br>      return (r1&#x2F;r2)*pow(10,t2-t1);   &#x2F;&#x2F;---整数相除 在乘上10的平方  小数点的长度<br>    &#125; <br>&#125; <br></code></pre></td></tr></table></figure>
+
+
+<h4 id="2-乘法函数"><a href="#2-乘法函数" class="headerlink" title="2 乘法函数"></a>2 乘法函数</h4><p>//说明：javascript的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。<br>//调用：accMul(arg1,arg2)<br>//返回值：arg1乘以arg2的精确结果 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">function accMul(arg1,arg2)&#123; <br>    var m&#x3D;0,s1&#x3D;arg1.toString(),s2&#x3D;arg2.toString(); <br>    try&#123;m+&#x3D;s1.split(&quot;.&quot;)[1].length&#125;catch(e)&#123;&#125; <br>    try&#123;m+&#x3D;s2.split(&quot;.&quot;)[1].length&#125;catch(e)&#123;&#125; <br>    return Number(s1.replace(&quot;.&quot;,&quot;&quot;))*Number(s2.replace(&quot;.&quot;,&quot;&quot;))&#x2F;Math.pow(10,m) <br>&#125; <br></code></pre></td></tr></table></figure>
+
+<h4 id="3-加法函数"><a href="#3-加法函数" class="headerlink" title="3 加法函数"></a>3 加法函数</h4><p>//说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。<br>//调用：accAdd(arg1,arg2)<br>//返回值：arg1加上arg2的精确结果 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">function accAdd(arg1,arg2)&#123; <br>    var r1,r2,m; <br>    try&#123;r1&#x3D;arg1.toString().split(&quot;.&quot;)[1].length&#125;catch(e)&#123;r1&#x3D;0&#125; <br>    try&#123;r2&#x3D;arg2.toString().split(&quot;.&quot;)[1].length&#125;catch(e)&#123;r2&#x3D;0&#125; <br>    m&#x3D;Math.pow(10,Math.max(r1,r2)) <br>    return (arg1*m+arg2*m)&#x2F;m <br>&#125; <br></code></pre></td></tr></table></figure>
+
+<h4 id="4-减法函数"><a href="#4-减法函数" class="headerlink" title="4 减法函数"></a>4 减法函数</h4><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">function accSub(arg1,arg2)&#123; <br>       var r1,r2,m,n; <br>       try&#123;r1&#x3D;arg1.toString().split(&quot;.&quot;)[1].length&#125;catch(e)&#123;r1&#x3D;0&#125; <br>       try&#123;r2&#x3D;arg2.toString().split(&quot;.&quot;)[1].length&#125;catch(e)&#123;r2&#x3D;0&#125; <br>       m&#x3D;Math.pow(10,Math.max(r1,r2)); <br>       &#x2F;&#x2F;last modify by deeka <br>       &#x2F;&#x2F;动态控制精度长度 <br>       n&#x3D;(r1&gt;&#x3D;r2)?r1:r2; <br>       return ((arg1*m-arg2*m)&#x2F;m).toFixed(n); <br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>GIT Operation</title>
     <url>/2020/09/08/git/</url>
     <content><![CDATA[<h4 id="git流程图"><a href="#git流程图" class="headerlink" title="git流程图"></a>git流程图</h4><p><img src="/image/640.png" alt="avatar"></p>
@@ -170,6 +186,111 @@
 ]]></content>
   </entry>
   <entry>
+    <title>JavaScript 宏任务和微任务</title>
+    <url>/2020/10/15/javascript/</url>
+    <content><![CDATA[<p>宏任务（macrotask ）和微任务（microtask ）</p>
+<p>macrotask 和 microtask 表示异步任务的两种分类</p>
+<p>在挂起任务时，JS 引擎会将所有任务按照类别分到这两个队列中，<br>首先在 macrotask 的队列（这个队列也被叫做 task queue）中取出第一个任务，<br>执行完毕后取出 microtask 队列中的所有任务顺序执行；之后再取 macrotask 任务，<br>周而复始，直至两个队列的任务都取完。</p>
+<p><img src="/image/650.png" alt="avatar"></p>
+<h3 id="宏任务"><a href="#宏任务" class="headerlink" title="宏任务"></a>宏任务</h3><table>
+<thead>
+<tr>
+<th align="left">#</th>
+<th>浏览器</th>
+<th>Node</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">I/O</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td align="left">setTimeout</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td align="left">setInterval</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td align="left">setImmediate</td>
+<td>x</td>
+<td>√</td>
+</tr>
+<tr>
+<td align="left">requestAnimationFrame</td>
+<td>√</td>
+<td>x</td>
+</tr>
+</tbody></table>
+<h3 id="微任务"><a href="#微任务" class="headerlink" title="微任务"></a>微任务</h3><table>
+<thead>
+<tr>
+<th align="left">#</th>
+<th>浏览器</th>
+<th>Node</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">process.nextTick</td>
+<td>x</td>
+<td>√</td>
+</tr>
+<tr>
+<td align="left">MutationObserver</td>
+<td>√</td>
+<td>x</td>
+</tr>
+<tr>
+<td align="left">Promise.then catch finally</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">setTimeout(() &#x3D;&gt; &#123;<br>    &#x2F;&#x2F;执行后 回调一个宏事件<br>    console.log(&#39;内层宏事件3&#39;)<br>&#125;, 0)<br>console.log(&#39;外层宏事件1&#39;);<br><br>new Promise((resolve) &#x3D;&gt; &#123;<br>    console.log(&#39;外层宏事件2&#39;);<br>    resolve()<br>&#125;).then(() &#x3D;&gt; &#123;<br>    console.log(&#39;微事件1&#39;);<br>&#125;).then(()&#x3D;&gt;&#123;<br>    console.log(&#39;微事件2&#39;)<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<ul>
+<li>外层宏事件1</li>
+<li>外层宏事件2</li>
+<li>微事件1</li>
+<li>微事件2</li>
+<li>内层宏事件3</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>&#x2F;&#x2F;主线程直接执行<br>console.log(&#39;1&#39;);<br>&#x2F;&#x2F;丢到宏事件队列中<br>setTimeout(function() &#123;<br>    console.log(&#39;2&#39;);<br>    process.nextTick(function() &#123;<br>        console.log(&#39;3&#39;);<br>    &#125;)<br>    new Promise(function(resolve) &#123;<br>        console.log(&#39;4&#39;);<br>        resolve();<br>    &#125;).then(function() &#123;<br>        console.log(&#39;5&#39;)<br>    &#125;)<br>&#125;)<br>&#x2F;&#x2F;微事件1<br>process.nextTick(function() &#123;<br>    console.log(&#39;6&#39;);<br>&#125;)<br>&#x2F;&#x2F;主线程直接执行<br>new Promise(function(resolve) &#123;<br>    console.log(&#39;7&#39;);<br>    resolve();<br>&#125;).then(function() &#123;<br>    &#x2F;&#x2F;微事件2<br>    console.log(&#39;8&#39;)<br>&#125;)<br>&#x2F;&#x2F;丢到宏事件队列中<br>setTimeout(function() &#123;<br>    console.log(&#39;9&#39;);<br>    process.nextTick(function() &#123;<br>        console.log(&#39;10&#39;);<br>    &#125;)<br>    new Promise(function(resolve) &#123;<br>        console.log(&#39;11&#39;);<br>        resolve();<br>    &#125;).then(function() &#123;<br>        console.log(&#39;12&#39;)<br>    &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>• 首先浏览器执行js进入第一个宏任务进入主线程, 直接打印console.log(‘1’)</p>
+<p>• 遇到 setTimeout  分发到宏任务Event Queue中</p>
+<p>• 遇到 process.nextTick 丢到微任务Event Queue中</p>
+<p>• 遇到 Promise， new Promise 直接执行 输出 console.log(‘7’);</p>
+<p>• 执行then 被分发到微任务Event Queue中</p>
+<p>•第一轮宏任务执行结束，开始执行微任务 打印 6,8</p>
+<p>•第一轮微任务执行完毕，执行第二轮宏事件，执行setTimeout</p>
+<p>•先执行主线程宏任务，在执行微任务，打印’2,4,3,5’</p>
+<p>•在执行第二个setTimeout,同理打印 ‘9,11,10,12’</p>
+<p>•整段代码，共进行了三次事件循环，完整的输出为1，7，6，8，2，4，3，5，9，11，10，12。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>promise  .all()  .race()  .allSettled()</title>
+    <url>/2020/09/24/promise/</url>
+    <content><![CDATA[<h4 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h4><p>Promise.all()只有在接受的所有promise实例全部是fulfilled才会走<br>Promise.all([p1,p2,p3]).then()方法，只要有其中一个promise实例是rejected，<br>就会直接走catch方法，并且catch中只会返回第一个变成rejected的promise的错误</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  resolve(&#39;hello&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p2报错&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p3 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p3报错&#39;)<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>Promise.all([p1, p2, p3])<br>.then(result &#x3D;&gt; console.log(result))<br>.catch(e &#x3D;&gt; console.log(e));<br>&#x2F;&#x2F; Error: p2报错<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Promise-allSettled"><a href="#Promise-allSettled" class="headerlink" title="Promise.allSettled()"></a>Promise.allSettled()</h4><p>接受的结果与入参时的promise实例一一对应，且结果的每一项都是一个对象，告诉你结果和值，<br>对象内都有一个属性叫“status”，用来明确知道对应的这个promise实例的状态（fulfilled或rejected），<br>fulfilled时，对象有value属性，rejected时有reason属性，对应两种状态的返回值。</p>
+<p>重要的一点是，他不论接受入参的promise本身的状态，会返回所有promise的结果，<br>但这一点Promise.all做不到，如果你需要知道所有入参的异步操作的所有结果，<br>或者需要知道这些异步操作是否全部结束，应该使用promise.allSettled()</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const resolved &#x3D; Promise.resolve(42);<br>const rejected &#x3D; Promise.reject(-1);<br><br>const allSettledPromise &#x3D; Promise.allSettled([resolved, rejected]);<br><br>allSettledPromise.then(function (results) &#123;<br>  console.log(results);<br>&#125;);<br>&#x2F;&#x2F; [<br>&#x2F;&#x2F;    &#123; status: &#39;fulfilled&#39;, value: 42 &#125;,<br>&#x2F;&#x2F;    &#123; status: &#39;rejected&#39;, reason: -1 &#125;<br>&#x2F;&#x2F; ]<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h4><p>Promise.race([p1, p2, p3])里面哪个结果获得的快，<br>就返回那个结果，不管结果本身是成功状态还是失败状态。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>let p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    resolve(&#39;success&#39;)<br>  &#125;,1000)<br>&#125;)<br><br>let p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    reject(&#39;failed&#39;)<br>  &#125;, 500)<br>&#125;)<br><br>Promise.race([p1, p2]).then((result) &#x3D;&gt; &#123;<br>  console.log(result)<br>&#125;).catch((error) &#x3D;&gt; &#123;<br>  console.log(error)  &#x2F;&#x2F; 打开的是 &#39;failed&#39;<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+  </entry>
+  <entry>
     <title>React Hook conclusion</title>
     <url>/2020/09/04/reactHook/</url>
     <content><![CDATA[<p>Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性</p>
@@ -260,108 +381,125 @@
 ]]></content>
   </entry>
   <entry>
-    <title>promise  .all()  .race()  .allSettled()</title>
-    <url>/2020/09/24/promise/</url>
-    <content><![CDATA[<h4 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h4><p>Promise.all()只有在接受的所有promise实例全部是fulfilled才会走<br>Promise.all([p1,p2,p3]).then()方法，只要有其中一个promise实例是rejected，<br>就会直接走catch方法，并且catch中只会返回第一个变成rejected的promise的错误</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  resolve(&#39;hello&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p2报错&#39;);<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>const p3 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  throw new Error(&#39;p3报错&#39;)<br>&#125;)<br>.then(result &#x3D;&gt; result);<br><br>Promise.all([p1, p2, p3])<br>.then(result &#x3D;&gt; console.log(result))<br>.catch(e &#x3D;&gt; console.log(e));<br>&#x2F;&#x2F; Error: p2报错<br><br></code></pre></td></tr></table></figure>
-
-<h4 id="Promise-allSettled"><a href="#Promise-allSettled" class="headerlink" title="Promise.allSettled()"></a>Promise.allSettled()</h4><p>接受的结果与入参时的promise实例一一对应，且结果的每一项都是一个对象，告诉你结果和值，<br>对象内都有一个属性叫“status”，用来明确知道对应的这个promise实例的状态（fulfilled或rejected），<br>fulfilled时，对象有value属性，rejected时有reason属性，对应两种状态的返回值。</p>
-<p>重要的一点是，他不论接受入参的promise本身的状态，会返回所有promise的结果，<br>但这一点Promise.all做不到，如果你需要知道所有入参的异步操作的所有结果，<br>或者需要知道这些异步操作是否全部结束，应该使用promise.allSettled()</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const resolved &#x3D; Promise.resolve(42);<br>const rejected &#x3D; Promise.reject(-1);<br><br>const allSettledPromise &#x3D; Promise.allSettled([resolved, rejected]);<br><br>allSettledPromise.then(function (results) &#123;<br>  console.log(results);<br>&#125;);<br>&#x2F;&#x2F; [<br>&#x2F;&#x2F;    &#123; status: &#39;fulfilled&#39;, value: 42 &#125;,<br>&#x2F;&#x2F;    &#123; status: &#39;rejected&#39;, reason: -1 &#125;<br>&#x2F;&#x2F; ]<br><br></code></pre></td></tr></table></figure>
-
-<h4 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h4><p>Promise.race([p1, p2, p3])里面哪个结果获得的快，<br>就返回那个结果，不管结果本身是成功状态还是失败状态。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>let p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    resolve(&#39;success&#39;)<br>  &#125;,1000)<br>&#125;)<br><br>let p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;<br>  setTimeout(() &#x3D;&gt; &#123;<br>    reject(&#39;failed&#39;)<br>  &#125;, 500)<br>&#125;)<br><br>Promise.race([p1, p2]).then((result) &#x3D;&gt; &#123;<br>  console.log(result)<br>&#125;).catch((error) &#x3D;&gt; &#123;<br>  console.log(error)  &#x2F;&#x2F; 打开的是 &#39;failed&#39;<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
-
-
-]]></content>
-  </entry>
-  <entry>
-    <title>JavaScript 宏任务和微任务</title>
-    <url>/2020/10/15/javascript/</url>
-    <content><![CDATA[<p>宏任务（macrotask ）和微任务（microtask ）</p>
-<p>macrotask 和 microtask 表示异步任务的两种分类</p>
-<p>在挂起任务时，JS 引擎会将所有任务按照类别分到这两个队列中，<br>首先在 macrotask 的队列（这个队列也被叫做 task queue）中取出第一个任务，<br>执行完毕后取出 microtask 队列中的所有任务顺序执行；之后再取 macrotask 任务，<br>周而复始，直至两个队列的任务都取完。</p>
-<p><img src="/image/650.png" alt="avatar"></p>
-<h3 id="宏任务"><a href="#宏任务" class="headerlink" title="宏任务"></a>宏任务</h3><table>
-<thead>
-<tr>
-<th align="left">#</th>
-<th>浏览器</th>
-<th>Node</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">I/O</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">setTimeout</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">setInterval</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">setImmediate</td>
-<td>x</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">requestAnimationFrame</td>
-<td>√</td>
-<td>x</td>
-</tr>
-</tbody></table>
-<h3 id="微任务"><a href="#微任务" class="headerlink" title="微任务"></a>微任务</h3><table>
-<thead>
-<tr>
-<th align="left">#</th>
-<th>浏览器</th>
-<th>Node</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">process.nextTick</td>
-<td>x</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">MutationObserver</td>
-<td>√</td>
-<td>x</td>
-</tr>
-<tr>
-<td align="left">Promise.then catch finally</td>
-<td>√</td>
-<td>√</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">setTimeout(() &#x3D;&gt; &#123;<br>    &#x2F;&#x2F;执行后 回调一个宏事件<br>    console.log(&#39;内层宏事件3&#39;)<br>&#125;, 0)<br>console.log(&#39;外层宏事件1&#39;);<br><br>new Promise((resolve) &#x3D;&gt; &#123;<br>    console.log(&#39;外层宏事件2&#39;);<br>    resolve()<br>&#125;).then(() &#x3D;&gt; &#123;<br>    console.log(&#39;微事件1&#39;);<br>&#125;).then(()&#x3D;&gt;&#123;<br>    console.log(&#39;微事件2&#39;)<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<ul>
-<li>外层宏事件1</li>
-<li>外层宏事件2</li>
-<li>微事件1</li>
-<li>微事件2</li>
-<li>内层宏事件3</li>
+    <title>vue3.0 简单使用</title>
+    <url>/2020/10/15/vue3/</url>
+    <content><![CDATA[<h3 id="vue3-0"><a href="#vue3-0" class="headerlink" title="vue3.0"></a>vue3.0</h3><ul>
+<li>向下兼容，Vue3 支持大多数 Vue2 的特性</li>
+<li>性能的提升，框架更快，更轻</li>
+<li>新推出的Composition API</li>
+<li>更好TypeScript支持</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>&#x2F;&#x2F;主线程直接执行<br>console.log(&#39;1&#39;);<br>&#x2F;&#x2F;丢到宏事件队列中<br>setTimeout(function() &#123;<br>    console.log(&#39;2&#39;);<br>    process.nextTick(function() &#123;<br>        console.log(&#39;3&#39;);<br>    &#125;)<br>    new Promise(function(resolve) &#123;<br>        console.log(&#39;4&#39;);<br>        resolve();<br>    &#125;).then(function() &#123;<br>        console.log(&#39;5&#39;)<br>    &#125;)<br>&#125;)<br>&#x2F;&#x2F;微事件1<br>process.nextTick(function() &#123;<br>    console.log(&#39;6&#39;);<br>&#125;)<br>&#x2F;&#x2F;主线程直接执行<br>new Promise(function(resolve) &#123;<br>    console.log(&#39;7&#39;);<br>    resolve();<br>&#125;).then(function() &#123;<br>    &#x2F;&#x2F;微事件2<br>    console.log(&#39;8&#39;)<br>&#125;)<br>&#x2F;&#x2F;丢到宏事件队列中<br>setTimeout(function() &#123;<br>    console.log(&#39;9&#39;);<br>    process.nextTick(function() &#123;<br>        console.log(&#39;10&#39;);<br>    &#125;)<br>    new Promise(function(resolve) &#123;<br>        console.log(&#39;11&#39;);<br>        resolve();<br>    &#125;).then(function() &#123;<br>        console.log(&#39;12&#39;)<br>    &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="安装vue3"><a href="#安装vue3" class="headerlink" title="安装vue3"></a>安装vue3</h4><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br># 全局安装<br>cnpm i -g create-vite-app<br>#<br>create-vite-app vue3-res<br>cd vue3-res<br>cnpm i<br><br></code></pre></td></tr></table></figure>
 
-<p>• 首先浏览器执行js进入第一个宏任务进入主线程, 直接打印console.log(‘1’)</p>
-<p>• 遇到 setTimeout  分发到宏任务Event Queue中</p>
-<p>• 遇到 process.nextTick 丢到微任务Event Queue中</p>
-<p>• 遇到 Promise， new Promise 直接执行 输出 console.log(‘7’);</p>
-<p>• 执行then 被分发到微任务Event Queue中</p>
-<p>•第一轮宏任务执行结束，开始执行微任务 打印 6,8</p>
-<p>•第一轮微任务执行完毕，执行第二轮宏事件，执行setTimeout</p>
-<p>•先执行主线程宏任务，在执行微任务，打印’2,4,3,5’</p>
-<p>•在执行第二个setTimeout,同理打印 ‘9,11,10,12’</p>
-<p>•整段代码，共进行了三次事件循环，完整的输出为1，7，6，8，2，4，3，5，9，11，10，12。</p>
+<h4 id="vue-实例的创建以及挂载变化"><a href="#vue-实例的创建以及挂载变化" class="headerlink" title="vue 实例的创建以及挂载变化"></a>vue 实例的创建以及挂载变化</h4><ul>
+<li>Vue2 创建实例并挂载 DOM 上<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>import Vue from &quot;vue&quot;<br>import App from &#39;.&#x2F;App.vue&#39;<br><br>const app &#x3D; new Vue(&#123;<br>    render: (h) &#x3D;&gt; h(App)<br>&#125;)<br><br>app.$mount(&quot;#app&quot;)<br><br><br></code></pre></td></tr></table></figure></li>
+<li>Vue3 创建实例并挂载 DOM 上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">import &#123; createApp &#125; from &#39;vue&#39;<br>import App from &#39;.&#x2F;App.vue&#39;<br><br>const app &#x3D; createApp(App)<br><br>app.mount(&#39;#app&#39;)<br><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="生命周期变化"><a href="#生命周期变化" class="headerlink" title="生命周期变化"></a>生命周期变化</h4><table>
+<thead>
+<tr>
+<th align="left">vue2</th>
+<th>vue3</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">beforeCreate</td>
+<td>setup()</td>
+<td>setup() :开始创建组件之前，在beforeCreate和created之前执行。创建的是data和method</td>
+</tr>
+<tr>
+<td align="left">created</td>
+<td>setup()</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">beforeMount</td>
+<td>onBeforeMount</td>
+<td>组件挂载到节点上之前执行的函数</td>
+</tr>
+<tr>
+<td align="left">mounted</td>
+<td>onMounted</td>
+<td>组件挂载完成后执行的函数</td>
+</tr>
+<tr>
+<td align="left">beforeUpdate</td>
+<td>onBeforeUpdate</td>
+<td>组件更新之前执行的函数</td>
+</tr>
+<tr>
+<td align="left">updated</td>
+<td>onUpdated</td>
+<td>组件更新完成之后执行的函数</td>
+</tr>
+<tr>
+<td align="left">beforeDestroy</td>
+<td>onBeforeUnmount</td>
+<td>组件卸载之前执行的函数</td>
+</tr>
+<tr>
+<td align="left">destroyed</td>
+<td>onUnmounted</td>
+<td>组件卸载完成后执行的函数</td>
+</tr>
+<tr>
+<td align="left">activated</td>
+<td>onActivated</td>
+<td>被包含在<keep-alive>中的组件，会多出两个生命周期钩子函数。被激活时执行</td>
+</tr>
+<tr>
+<td align="left">deactivated</td>
+<td>onDeactivated</td>
+<td>比如从 A 组件，切换到 B 组件，A 组件消失时执行</td>
+</tr>
+<tr>
+<td align="left">errorCaptured</td>
+<td>onErrorCaptured</td>
+<td>当捕获一个来自子孙组件的异常时激活钩子函数</td>
+</tr>
+</tbody></table>
+<h4 id="vue-组件-指令-插件注册-变化"><a href="#vue-组件-指令-插件注册-变化" class="headerlink" title="vue 组件/指令/插件注册 变化"></a>vue 组件/指令/插件注册 变化</h4><ul>
+<li>vue2<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>Vue.component(&#39;SearchInput&#39;, SearchInputComponent)<br>Vue.directive(&#39;focus&#39;, FocusDirective)<br>Vue.use(LocalePlugin)<br><br></code></pre></td></tr></table></figure></li>
+<li>vue3</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const app &#x3D; Vue.createApp(&#123;&#125;)<br>app.component(&#39;SearchInput&#39;, SearchInputComponent)<br>app.directive(&#39;focus&#39;, FocusDirective)<br>app.use(LocalePlugin)<br><br>&#x2F;&#x2F;或者<br><br>Vue.createApp(&#123;&#125;)<br>    .component(&#39;SearchInput&#39;, SearchInputComponent)<br>    .directive(&#39;focus&#39;, FocusDirective)<br>    .use(LocalePlugin)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Composition-API"><a href="#Composition-API" class="headerlink" title="Composition API"></a>Composition API</h4><p>与之前option配置方法写组件的时候相比，当组件越来越多，业务复杂度越来越高，导致后续维护非常的复杂，同时代码可复用性不高</p>
+<ul>
+<li>reactive</li>
+<li>ref</li>
+<li>computed</li>
+<li>watchEffect</li>
+<li>toRefs</li>
+<li>生命周期的hooks</li>
+</ul>
+<h5 id="reactive"><a href="#reactive" class="headerlink" title="reactive"></a>reactive</h5><blockquote>
+<p>将传入的对象生成新的深度响应式对象,其不等于原始对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">const obj &#x3D; reactive(&#123; <br>    count: 0,<br>    books:[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><blockquote>
+<p>将传入的简单数据值生成新的响应式对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">const count &#x3D; ref(0)<br>console.log(count.value) &#x2F;&#x2F; 0<br><br>count.value++<br>console.log(count.value) &#x2F;&#x2F; 1<br><br></code></pre></td></tr></table></figure>
+<h4 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h4><blockquote>
+<p>使用 getter 函数，并为从 getter 返回的值返回一个不变的响应式 ref 对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>const count &#x3D; ref(1)<br>const plusOne &#x3D; computed(() &#x3D;&gt; count.value + 1)<br><br>console.log(plusOne.value) &#x2F;&#x2F; 2<br><br>plusOne.value++ &#x2F;&#x2F; error<br><br></code></pre></td></tr></table></figure>
+<h4 id="watchEffect"><a href="#watchEffect" class="headerlink" title="watchEffect"></a>watchEffect</h4><blockquote>
+<p>在响应式地跟踪其依赖项时立即运行一个函数，并在更改依赖项时重新运行它</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">const count &#x3D; ref(0)<br><br>watchEffect(() &#x3D;&gt; console.log(count.value))<br>&#x2F;&#x2F; -&gt; logs 0<br><br>setTimeout(() &#x3D;&gt; &#123;<br>  count.value++<br>  &#x2F;&#x2F; -&gt; logs 1<br>&#125;, 100)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>&#x2F;&#x2F; 侦听一个getter<br>const state &#x3D; reactive(&#123; count: 0 &#125;)<br>watch(<br>  () &#x3D;&gt; state.count,<br>  (count, prevCount) &#x3D;&gt; &#123;<br>    &#x2F;* ... *&#x2F;<br>  &#125;<br>)<br><br>&#x2F;&#x2F; 直接侦听一个ref<br>const count &#x3D; ref(0)<br>watch(count, (count, prevCount) &#x3D;&gt; &#123;<br>  &#x2F;* ... *&#x2F;<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
 ]]></content>
   </entry>
 </search>
