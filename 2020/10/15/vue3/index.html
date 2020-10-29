@@ -1,84 +1,194 @@
 
+
 <!DOCTYPE html>
-<html lang="en" class="loading">
+<html lang="en" color-mode=light>
+
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>vue3.0 简单使用 - zhaoyingchen blog</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate" />
-    <meta name="keywords" content="echozyc,"> 
-    <meta name="description" content="vue3.0
-向下兼容，Vue3 支持大多数 Vue2 的特性
-性能的提升，框架更快，更轻
-新推出的Composition API
-更好TypeScript支持
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue3.0 简单使用 - zhaoyingchen blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
 
-安装vue312345678# 全,"> 
-    <meta name="author" content="zhaoyingchen"> 
-    <link rel="alternative" href="atom.xml" title="zhaoyingchen blog" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    
-    
-<link rel="stylesheet" href="/css/diaspora.css">
+  
+  
+  <meta name="description" content="vue3.0
+向下兼容，Vue3 支持大多数 Vue2..."> 
+  
+  <meta name="author" content="zhaoyingchen"> 
 
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-8691406134231910",
-              enable_page_level_ads: true
-         });
-    </script>
-    <script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-    </script>
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        onlyPost: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: '',
+        default: '周子钰大傻逼'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        alwaysShow: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      }
+    }
+  </script>
+
+  
+
+  
 <meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
 
-<body class="loading">
-    <span id="config-title" style="display:none">zhaoyingchen blog</span>
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
-    <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">vue3.0 简单使用</h3>
-    <div class="social">
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
-            </div>
-            <div id="qr"></div>
-        </div>
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">vue3.0 简单使用</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
     </div>
-    <div class="scrollbar"></div>
-</div>
-
-    <div class="section">
-        <div class="article">
-    <div class='main'>
-        <h1 class="title">vue3.0 简单使用</h1>
-        <div class="stuff">
-            <span>十月 15, 2020</span>
-            
-
-        </div>
-        <div class="content markdown">
-            <h3 id="vue3-0"><a href="#vue3-0" class="headerlink" title="vue3.0"></a>vue3.0</h3><ul>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">vue3.0 简单使用</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 15, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2656</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h3 id="vue3-0"><a href="#vue3-0" class="headerlink" title="vue3.0"></a>vue3.0</h3><ul>
 <li>向下兼容，Vue3 支持大多数 Vue2 的特性</li>
 <li>性能的提升，框架更快，更轻</li>
 <li>新推出的Composition API</li>
 <li>更好TypeScript支持</li>
 </ul>
-<h4 id="安装vue3"><a href="#安装vue3" class="headerlink" title="安装vue3"></a>安装vue3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br># 全局安装<br>cnpm i -g create-vite-app<br>#<br>create-vite-app vue3-res<br>cd vue3-res<br>cnpm i<br><br></code></pre></td></tr></table></figure>
+<h4 id="安装vue3"><a href="#安装vue3" class="headerlink" title="安装vue3"></a>安装vue3</h4><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><br><span class="hljs-comment"># 全局安装</span><br><span class="hljs-string">cnpm </span>i -g <span class="hljs-built_in">create-vite-app</span><br><span class="hljs-built_in">#</span><br><span class="hljs-built_in">create-vite-app</span> <span class="hljs-string">vue3-res</span><br><span class="hljs-string">cd </span><span class="hljs-string">vue3-res</span><br><span class="hljs-string">cnpm </span>i<br><br></code></pre></td></tr></table></figure>
 
 <h4 id="vue-实例的创建以及挂载变化"><a href="#vue-实例的创建以及挂载变化" class="headerlink" title="vue 实例的创建以及挂载变化"></a>vue 实例的创建以及挂载变化</h4><ul>
-<li>Vue2 创建实例并挂载 DOM 上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>import Vue from &quot;vue&quot;<br>import App from &#39;.&#x2F;App.vue&#39;<br><br>const app &#x3D; new Vue(&#123;<br>    render: (h) &#x3D;&gt; h(App)<br>&#125;)<br><br>app.$mount(&quot;#app&quot;)<br><br><br></code></pre></td></tr></table></figure></li>
+<li>Vue2 创建实例并挂载 DOM 上<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><br><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span><br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><br>const app = <span class="hljs-keyword">new</span> Vue(&#123;<br>    render: <span class="hljs-function"><span class="hljs-params">(h)</span> =&gt;</span> h(App)<br>&#125;)<br><br>app.$mount(<span class="hljs-string">&quot;#app&quot;</span>)<br><br><br></code></pre></td></tr></table></figure></li>
 <li>Vue3 创建实例并挂载 DOM 上</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">import &#123; createApp &#125; from &#39;vue&#39;<br>import App from &#39;.&#x2F;App.vue&#39;<br><br>const app &#x3D; createApp(App)<br><br>app.mount(&#39;#app&#39;)<br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><br><span class="hljs-keyword">const</span> app = createApp(App)<br><br>app.mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br><br><br></code></pre></td></tr></table></figure>
 
 <h4 id="生命周期变化"><a href="#生命周期变化" class="headerlink" title="生命周期变化"></a>生命周期变化</h4><table>
 <thead>
@@ -145,10 +255,10 @@
 </tr>
 </tbody></table>
 <h4 id="vue-组件-指令-插件注册-变化"><a href="#vue-组件-指令-插件注册-变化" class="headerlink" title="vue 组件/指令/插件注册 变化"></a>vue 组件/指令/插件注册 变化</h4><ul>
-<li>vue2<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>Vue.component(&#39;SearchInput&#39;, SearchInputComponent)<br>Vue.directive(&#39;focus&#39;, FocusDirective)<br>Vue.use(LocalePlugin)<br><br></code></pre></td></tr></table></figure></li>
+<li>vue2<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Vue</span>.</span></span>component(&#x27;SearchInput&#x27;, SearchInputComponent)<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Vue</span>.</span></span>directive(&#x27;focus&#x27;, FocusDirective)<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Vue</span>.</span></span>use(LocalePlugin)<br><br></code></pre></td></tr></table></figure></li>
 <li>vue3</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>const app &#x3D; Vue.createApp(&#123;&#125;)<br>app.component(&#39;SearchInput&#39;, SearchInputComponent)<br>app.directive(&#39;focus&#39;, FocusDirective)<br>app.use(LocalePlugin)<br><br>&#x2F;&#x2F;或者<br><br>Vue.createApp(&#123;&#125;)<br>    .component(&#39;SearchInput&#39;, SearchInputComponent)<br>    .directive(&#39;focus&#39;, FocusDirective)<br>    .use(LocalePlugin)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs rust"><br><span class="hljs-keyword">const</span> app = Vue.createApp(&#123;&#125;)<br>app.component(<span class="hljs-symbol">&#x27;SearchInput</span>&#x27;, SearchInputComponent)<br>app.directive(<span class="hljs-symbol">&#x27;focus</span>&#x27;, FocusDirective)<br>app.<span class="hljs-keyword">use</span>(LocalePlugin)<br><br><span class="hljs-comment">//或者</span><br><br>Vue.createApp(&#123;&#125;)<br>    .component(<span class="hljs-symbol">&#x27;SearchInput</span>&#x27;, SearchInputComponent)<br>    .directive(<span class="hljs-symbol">&#x27;focus</span>&#x27;, FocusDirective)<br>    .<span class="hljs-keyword">use</span>(LocalePlugin)<br><br></code></pre></td></tr></table></figure>
 
 <h4 id="Composition-API"><a href="#Composition-API" class="headerlink" title="Composition API"></a>Composition API</h4><p>与之前option配置方法写组件的时候相比，当组件越来越多，业务复杂度越来越高，导致后续维护非常的复杂，同时代码可复用性不高</p>
 <ul>
@@ -162,130 +272,231 @@
 <h5 id="reactive"><a href="#reactive" class="headerlink" title="reactive"></a>reactive</h5><blockquote>
 <p>将传入的对象生成新的深度响应式对象,其不等于原始对象</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">const obj &#x3D; reactive(&#123; <br>    count: 0,<br>    books:[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]<br>&#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts">const obj = reactive(&#123; <br><span class="hljs-symbol">    count:</span> <span class="hljs-number">0</span>,<br><span class="hljs-symbol">    books:</span>[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]<br>&#125;)<br></code></pre></td></tr></table></figure>
 <h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><blockquote>
 <p>将传入的简单数据值生成新的响应式对象</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">const count &#x3D; ref(0)<br>console.log(count.value) &#x2F;&#x2F; 0<br><br>count.value++<br>console.log(count.value) &#x2F;&#x2F; 1<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight irpf90"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs irpf90">const <span class="hljs-built_in">count</span> = ref(<span class="hljs-number">0</span>)<br>console<span class="hljs-number">.</span><span class="hljs-built_in">log</span>(<span class="hljs-built_in">count</span><span class="hljs-number">.</span><span class="hljs-keyword">value</span>) // <span class="hljs-number">0</span><br><br><span class="hljs-built_in">count</span><span class="hljs-number">.</span><span class="hljs-keyword">value</span>++<br>console<span class="hljs-number">.</span><span class="hljs-built_in">log</span>(<span class="hljs-built_in">count</span><span class="hljs-number">.</span><span class="hljs-keyword">value</span>) // <span class="hljs-number">1</span><br><br></code></pre></td></tr></table></figure>
 <h4 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h4><blockquote>
 <p>使用 getter 函数，并为从 getter 返回的值返回一个不变的响应式 ref 对象</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>const count &#x3D; ref(1)<br>const plusOne &#x3D; computed(() &#x3D;&gt; count.value + 1)<br><br>console.log(plusOne.value) &#x2F;&#x2F; 2<br><br>plusOne.value++ &#x2F;&#x2F; error<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><br><span class="hljs-keyword">const</span> count = <span class="hljs-keyword">ref</span>(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">const</span> plusOne = computed(() =&gt; count.<span class="hljs-keyword">value</span> + <span class="hljs-number">1</span>)<br><br>console.log(plusOne.<span class="hljs-keyword">value</span>) <span class="hljs-comment">// 2</span><br><br>plusOne.<span class="hljs-keyword">value</span>++ <span class="hljs-comment">// error</span><br><br></code></pre></td></tr></table></figure>
 <h4 id="watchEffect"><a href="#watchEffect" class="headerlink" title="watchEffect"></a>watchEffect</h4><blockquote>
 <p>在响应式地跟踪其依赖项时立即运行一个函数，并在更改依赖项时重新运行它</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plain">const count &#x3D; ref(0)<br><br>watchEffect(() &#x3D;&gt; console.log(count.value))<br>&#x2F;&#x2F; -&gt; logs 0<br><br>setTimeout(() &#x3D;&gt; &#123;<br>  count.value++<br>  &#x2F;&#x2F; -&gt; logs 1<br>&#125;, 100)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">const count = ref(<span class="hljs-number">0</span>)<br><br>watchEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(count.value))<br><span class="hljs-regexp">//</span> -&gt; logs <span class="hljs-number">0</span><br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>  count.value++<br>  <span class="hljs-regexp">//</span> -&gt; logs <span class="hljs-number">1</span><br>&#125;, <span class="hljs-number">100</span>)<br><br></code></pre></td></tr></table></figure>
 
-<h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>&#x2F;&#x2F; 侦听一个getter<br>const state &#x3D; reactive(&#123; count: 0 &#125;)<br>watch(<br>  () &#x3D;&gt; state.count,<br>  (count, prevCount) &#x3D;&gt; &#123;<br>    &#x2F;* ... *&#x2F;<br>  &#125;<br>)<br><br>&#x2F;&#x2F; 直接侦听一个ref<br>const count &#x3D; ref(0)<br>watch(count, (count, prevCount) &#x3D;&gt; &#123;<br>  &#x2F;* ... *&#x2F;<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
-
-
+<h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs pf"><br>// 侦听一个getter<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">state</span> = reactive(&#123; count: <span class="hljs-number">0</span> &#125;)<br>watch(<br>  () =&gt; <span class="hljs-keyword">state</span>.count,<br>  (count, prevCount) =&gt; &#123;<br>    /* ... */<br>  &#125;<br>)<br><br>// 直接侦听一个ref<br><span class="hljs-keyword">const</span> count = ref(<span class="hljs-number">0</span>)<br>watch(count, (count, prevCount) =&gt; &#123;<br>  /* ... */<br>&#125;)<br><br><br></code></pre></td></tr></table></figure>
 
 
 
 
 
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        
-                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
-                        
-                    
-                        
-                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
-                        
-                    
-                </ul>
-            
-        </div>
+
+
+      </section>
+      <section class="extra">
         
-    <div id='gitalk-container' class="comment link"
-		data-enable='false'
-        data-ae='false'
-        data-ci=''
-        data-cs=''
-        data-r=''
-        data-o=''
-        data-a=''
-        data-d='false'
-    >查看评论</div>
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>zhaoyingchen</li>
+  <li><strong>本文链接：</strong><a href="http://example.com/2020/10/15/vue3/index.html">http://example.com/2020/10/15/vue3/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+<nav class="nav">
+  
+    <a href="/2020/10/28/ac/"><i class="iconfont iconleft"></i>JS accuracy</a>
+  
+  
+    <a href="/2020/10/15/javascript/">JavaScript 宏任务和微任务<i class="iconfont iconright"></i></a>
+  
+</nav>
 
-
-    </div>
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
     
-</div>
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
 
-
-    </div>
-</div>
+  
 </body>
 
 
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/typed.js"></script>
-<script src="/js/diaspora.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
 
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
 
 
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
 
 
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: "abcdefg"
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
 
 
 
