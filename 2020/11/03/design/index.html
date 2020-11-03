@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS design model - zhaoyingchen blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="js设计模式单例模式
+定义：保证一个类仅有一个实例，并..."> 
+  
+  <meta name="author" content="zhaoyingchen"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        onlyPost: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: true,
+        alipay: '',
+        wechat: ''
+      },
+      motto: {
+        api: '',
+        default: '天黑有灯，下雨有伞'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        alwaysShow: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">JS design model</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">JS design model</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 03, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4072</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h3 id="js设计模式"><a href="#js设计模式" class="headerlink" title="js设计模式"></a>js设计模式</h3><h4 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h4><blockquote>
+<p>定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点<br>核心：确保只有一个实例，并提供全局访问</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs javascript">假设要设置一个管理员，多次调用也仅设置一次，我们可以使用闭包缓存一个内部变量来实现这个单例<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SetManager</span>(<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.manager = name;<br>&#125;<br><br>SetManager.prototype.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.manager);<br>&#125;;<br><br><span class="hljs-keyword">var</span> SingletonSetManager = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> manager = <span class="hljs-literal">null</span>;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>&#123;<br>        <span class="hljs-keyword">if</span> (!manager) &#123;<br>            manager = <span class="hljs-keyword">new</span> SetManager(name);<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> manager;<br>    &#125; <br>&#125;)();<br><br>SingletonSetManager(<span class="hljs-string">&#x27;a&#x27;</span>).getName(); <span class="hljs-comment">// a</span><br>SingletonSetManager(<span class="hljs-string">&#x27;b&#x27;</span>).getName(); <span class="hljs-comment">// a</span><br>SingletonSetManager(<span class="hljs-string">&#x27;c&#x27;</span>).getName(); <span class="hljs-comment">// a</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
+<p>定义：一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。<br>核心：将算法的使用和算法的实现分离开来。<br>一个基于策略模式的程序至少由两部分组成：<br>第一个部分是一组策略类，策略类封装了具体的算法，并负责具体的计算过程。<br>第二个部分是环境类Context，Context接受客户的请求，随后把请求委托给某一个策略类。要做到这点，说明Context 中要维持对某个策略对象的引用</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs javascript">策略模式可以用于组合一系列算法，也可用于组合一系列业务规则<br><br><span class="hljs-comment">// 加权映射关系</span><br><span class="hljs-keyword">var</span> levelMap = &#123;<br>    S: <span class="hljs-number">10</span>,<br>    A: <span class="hljs-number">8</span>,<br>    B: <span class="hljs-number">6</span>,<br>    C: <span class="hljs-number">4</span><br>&#125;;<br><br><span class="hljs-comment">// 组策略</span><br><span class="hljs-keyword">var</span> scoreLevel = &#123;<br>    basicScore: <span class="hljs-number">80</span>,<br><br>    S: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.basicScore + levelMap[<span class="hljs-string">&#x27;S&#x27;</span>]; <br>    &#125;,<br><br>    A: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.basicScore + levelMap[<span class="hljs-string">&#x27;A&#x27;</span>]; <br>    &#125;,<br><br>    B: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.basicScore + levelMap[<span class="hljs-string">&#x27;B&#x27;</span>]; <br>    &#125;,<br><br>    C: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.basicScore + levelMap[<span class="hljs-string">&#x27;C&#x27;</span>]; <br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 调用</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getScore</span>(<span class="hljs-params">level</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> scoreLevel[level] ? scoreLevel[level]() : <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(<br>    getScore(<span class="hljs-string">&#x27;S&#x27;</span>),<br>    getScore(<span class="hljs-string">&#x27;A&#x27;</span>),<br>    getScore(<span class="hljs-string">&#x27;B&#x27;</span>),<br>    getScore(<span class="hljs-string">&#x27;C&#x27;</span>),<br>    getScore(<span class="hljs-string">&#x27;D&#x27;</span>)<br>); <span class="hljs-comment">// 90 88 86 84 0</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><blockquote>
+<p>定义：为一个对象提供一个代用品或占位符，以便控制对它的访问<br>核心：当客户不方便直接访问一个 对象或者不满足需要的时候，提供一个替身对象 来控制对这个对象的访问，客户实际上访问的是 替身对象。<br>替身对象对请求做出一些处理之后， 再把请求转交给本体对象<br>代理和本体的接口具有一致性，本体定义了关键功能，而代理是提供或拒绝对它的访问，或者在访问本体之前做一 些额外的事情</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript">代理模式主要有三种：保护代理、虚拟代理、缓存代理<br>保护代理主要实现了访问主体的限制行为，以过滤字符作为简单的例子<br><br><span class="hljs-comment">// 主体，发送消息</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMsg</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(msg);<br>&#125;<br><br><span class="hljs-comment">// 代理，对消息进行过滤</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">proxySendMsg</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-comment">// 无消息则直接返回</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> msg === <span class="hljs-string">&#x27;undefined&#x27;</span>) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;deny&#x27;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <br>    <span class="hljs-comment">// 有消息则进行过滤</span><br>    msg = (<span class="hljs-string">&#x27;&#x27;</span> + msg).replace(<span class="hljs-regexp">/泥\s*煤/g</span>, <span class="hljs-string">&#x27;&#x27;</span>);<br><br>    sendMsg(msg);<br>&#125;<br><br><br>sendMsg(<span class="hljs-string">&#x27;泥煤呀泥 煤呀&#x27;</span>); <span class="hljs-comment">// 泥煤呀泥 煤呀</span><br>proxySendMsg(<span class="hljs-string">&#x27;泥煤呀泥 煤&#x27;</span>); <span class="hljs-comment">// 呀</span><br>proxySendMsg(); <span class="hljs-comment">// deny</span><br></code></pre></td></tr></table></figure>
+<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><blockquote>
+<p>定义：迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。<br>核心：在使用迭代器模式之后，即使不关心对象的内部构造，也可以按顺序访问其中的每个元素</p>
+</blockquote>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">JS中数组的map <span class="hljs-keyword">forEach</span> 已经内置了迭代器<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].<span class="hljs-keyword">forEach</span>(<span class="hljs-keyword">function</span>(item, <span class="hljs-keyword">index</span>, arr) &#123;<br>    console.log(item, <span class="hljs-keyword">index</span>, arr);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">function</span> <span class="hljs-keyword">each</span>(obj, cb) &#123;<br>    var <span class="hljs-keyword">value</span>;<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">Array</span>.isArray(obj)) &#123;<br>        <span class="hljs-keyword">for</span> (var i = <span class="hljs-number">0</span>; i &lt; obj.length; ++i) &#123;<br>            <span class="hljs-keyword">value</span> = cb.<span class="hljs-keyword">call</span>(obj[i], i, obj[i]);<br><br>            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">value</span> === <span class="hljs-keyword">false</span>) &#123;<br>                break;<br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">for</span> (var i <span class="hljs-keyword">in</span> obj) &#123;<br>            <span class="hljs-keyword">value</span> = cb.<span class="hljs-keyword">call</span>(obj[i], i, obj[i]);<br><br>            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">value</span> === <span class="hljs-keyword">false</span>) &#123;<br>                break;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">each</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-keyword">function</span>(<span class="hljs-keyword">index</span>, <span class="hljs-keyword">value</span>) &#123;<br>    console.log(<span class="hljs-keyword">index</span>, <span class="hljs-keyword">value</span>);<br>&#125;);<br><br><span class="hljs-keyword">each</span>(&#123;a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span>&#125;, <span class="hljs-keyword">function</span>(<span class="hljs-keyword">index</span>, <span class="hljs-keyword">value</span>) &#123;<br>    console.log(<span class="hljs-keyword">index</span>, <span class="hljs-keyword">value</span>);<br>&#125;);<br><br>// <span class="hljs-number">0</span> <span class="hljs-number">1</span><br>// <span class="hljs-number">1</span> <span class="hljs-number">2</span><br>// <span class="hljs-number">2</span> <span class="hljs-number">3</span><br><br>// a <span class="hljs-number">1</span><br>// b <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="发布-订阅模式"><a href="#发布-订阅模式" class="headerlink" title="发布-订阅模式"></a>发布-订阅模式</h3><blockquote>
+<p>定义：也称作观察者模式，定义了对象间的一种一对多的依赖关系，当一个对象的状态发 生改变时，所有依赖于它的对象都将得到通知<br>核心：取代对象之间硬编码的通知机制，一个对象不用再显式地调用另外一个对象的某个接口。<br>与传统的发布-订阅模式实现方式（将订阅者自身当成引用传入发布者）不同，在JS中通常使用注册回调函数的形式来订阅</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">JS中的事件就是经典的发布-订阅模式的实现<br><br><span class="hljs-comment">// 订阅</span><br><span class="hljs-built_in">document</span>.body.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;click1&#x27;</span>);<br>&#125;, <span class="hljs-literal">false</span>);<br><br><span class="hljs-built_in">document</span>.body.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;click2&#x27;</span>);<br>&#125;, <span class="hljs-literal">false</span>);<br><br><span class="hljs-comment">// 发布</span><br><span class="hljs-built_in">document</span>.body.click(); <span class="hljs-comment">// click1  click2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><blockquote>
+<p>定义：用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系<br>命令（command）指的是一个执行某些特定事情的指令<br>核心：命令中带有execute执行、undo撤销、redo重做等相关命令方法，建议显示地指示这些方法名</p>
+</blockquote>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>zhaoyingchen</li>
+  <li><strong>本文链接：</strong><a href="http://echozyc.github.io/2020/11/03/design/index.html">http://echozyc.github.io/2020/11/03/design/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img src="">
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+<nav class="nav">
+  
+  
+    <a href="/2020/11/03/jsCon/">JS 手写代码<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="13199117988@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: "abcdefg"
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

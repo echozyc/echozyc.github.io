@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS 手写代码 - zhaoyingchen blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="手写代码实现实现map1234567Array.pro..."> 
+  
+  <meta name="author" content="zhaoyingchen"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        onlyPost: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: true,
+        alipay: '',
+        wechat: ''
+      },
+      motto: {
+        api: '',
+        default: '天黑有灯，下雨有伞'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        alwaysShow: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">JS 手写代码</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">JS 手写代码</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 03, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3902</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h3 id="手写代码实现"><a href="#手写代码实现" class="headerlink" title="手写代码实现"></a>手写代码实现</h3><h4 id="实现map"><a href="#实现map" class="headerlink" title="实现map"></a>实现map</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.prototype.map = <span class="hljs-built_in">Array</span>.prototype.map || <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">fn</span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, m = <span class="hljs-built_in">this</span>.length, res = [], tmp; i &lt; m; i++) &#123;<br>    tmp = <span class="hljs-built_in">this</span>[i];<br>    res.push(fn.call(tmp, tmp, i, <span class="hljs-built_in">this</span>));<br>  &#125;<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="实现new"><a href="#实现new" class="headerlink" title="实现new"></a>实现new</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">New</span><span class="hljs-params">(func)</span> &#123;</span><br>  var <span class="hljs-keyword">res</span> = &#123;&#125;<br>  <span class="hljs-keyword">if</span>(func.prototype !== null) &#123;<br>    <span class="hljs-keyword">res</span>.__proto__ = func.prototype<br>  &#125;<br>  var <span class="hljs-keyword">ret</span> = func.apply(<span class="hljs-keyword">res</span>, Array.prototype.slice.<span class="hljs-keyword">call</span>(arguments, <span class="hljs-number">1</span>))<br>  <span class="hljs-keyword">if</span>(typeof <span class="hljs-keyword">ret</span> === <span class="hljs-string">&#x27;object&#x27;</span> || (typeof <span class="hljs-keyword">ret</span> === <span class="hljs-string">&#x27;function&#x27;</span> || <span class="hljs-keyword">ret</span> !== null) <span class="hljs-keyword">return</span> <span class="hljs-keyword">ret</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">res</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="实现promise"><a href="#实现promise" class="headerlink" title="实现promise"></a>实现promise</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">function</span> <span class="hljs-built_in">Promise</span>（exector）&#123;<br>  <span class="hljs-keyword">let</span> <span class="hljs-literal">that</span> = <span class="hljs-built_in">this</span><br>  <span class="hljs-keyword">let</span> status = <span class="hljs-string">&#x27;pending&#x27;</span><br>  <span class="hljs-keyword">let</span> value = <span class="hljs-literal">undefined</span><br>  <span class="hljs-keyword">let</span> reason = undefind<br>  <span class="hljs-keyword">function</span> resolve(value) &#123;<br>    <span class="hljs-keyword">if</span>(status == <span class="hljs-string">&#x27;pending&#x27;</span>) &#123;<br>      <span class="hljs-literal">that</span>.value = value<br>      <span class="hljs-literal">that</span>.status = <span class="hljs-string">&#x27;onFullfiled&#x27;</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">function</span> reject(reason) &#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-literal">that</span>.value == <span class="hljs-string">&#x27;pending&#x27;</span>) &#123;<br>      <span class="hljs-literal">that</span>.reason = reason<br>      <span class="hljs-literal">that</span>.status = <span class="hljs-string">&#x27;onRegected&#x27;</span><br>    &#125;<br>  &#125; <br>&#125; <br><br><span class="hljs-built_in">Promise</span>.prototype.<span class="hljs-keyword">then</span> = <span class="hljs-keyword">function</span>(resolve,reject) &#123;<br>  <span class="hljs-keyword">let</span> <span class="hljs-literal">that</span> = <span class="hljs-built_in">this</span><br>  <span class="hljs-keyword">if</span>(<span class="hljs-literal">that</span>.status == <span class="hljs-string">&#x27;onFullfiled&#x27;</span>) resolve(value)<br>  <span class="hljs-keyword">if</span>(<span class="hljs-literal">that</span>.status == <span class="hljs-string">&#x27;onRegected&#x27;</span>) reject(value)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="实现instanceOf"><a href="#实现instanceOf" class="headerlink" title="实现instanceOf"></a>实现instanceOf</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">instanceOf</span>(<span class="hljs-params">left, right</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> proto = left.__proto__<br>  <span class="hljs-keyword">let</span> prototype = right.prototype<br>  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    <span class="hljs-keyword">if</span>(proto == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    <span class="hljs-keyword">if</span>(prototype == proto) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    proto = proto.__proto__<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="实现深拷贝"><a href="#实现深拷贝" class="headerlink" title="实现深拷贝"></a>实现深拷贝</h4><h5 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> deep<span class="hljs-constructor">Clone(<span class="hljs-params">obj</span>)</span> &#123;<br>  <span class="hljs-keyword">let</span> objClone = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span>is<span class="hljs-constructor">Array(<span class="hljs-params">obj</span>)</span>?<span class="hljs-literal">[]</span>:&#123;&#125;<br>  <span class="hljs-keyword">if</span>(obj<span class="hljs-operator"> &amp;&amp; </span>typeOf (obj)<span class="hljs-operator"> === </span>&#x27;<span class="hljs-keyword">object</span>&#x27;) &#123;<br>    <span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> obj) &#123;<br>      <span class="hljs-keyword">if</span>(obj hasOwnProperty i) &#123;<br>        <span class="hljs-keyword">if</span>(obj<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-operator"> &amp;&amp; </span><span class="hljs-keyword">type</span><span class="hljs-constructor">Of(<span class="hljs-params">obj</span>[<span class="hljs-params">i</span>])</span><span class="hljs-operator"> === </span>&#x27;<span class="hljs-keyword">object</span>&#x27;) &#123;<br>          objClone<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = deep<span class="hljs-constructor">Clone(<span class="hljs-params">obj</span>[<span class="hljs-params">i</span>])</span><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>          objClone<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = obj<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>  return objClone<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h5 id="JSON-对象的-parse-和-stringify"><a href="#JSON-对象的-parse-和-stringify" class="headerlink" title="JSON 对象的 parse 和 stringify"></a>JSON 对象的 parse 和 stringify</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> deep<span class="hljs-constructor">Clone(<span class="hljs-params">obj</span>)</span> &#123;<br>  <span class="hljs-keyword">let</span> obj2 = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JSON</span>.</span></span>stringify(obj)<br>  <span class="hljs-keyword">let</span> objClone = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JSON</span>.</span></span>parse(obj2)<br>  return objClone<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="实现函数柯里化"><a href="#实现函数柯里化" class="headerlink" title="实现函数柯里化"></a>实现函数柯里化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 支持多参数传递</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">progressCurrying</span>(<span class="hljs-params">fn, args</span>) </span>&#123;<br><br>    <span class="hljs-keyword">var</span> _this = <span class="hljs-built_in">this</span><br>    <span class="hljs-keyword">var</span> len = fn.length;<br>    <span class="hljs-keyword">var</span> args = args || [];<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> _args = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>);<br>        <span class="hljs-built_in">Array</span>.prototype.push.apply(args, _args);<br><br>        <span class="hljs-comment">// 如果参数个数小于最初的fn.length，则递归调用，继续收集参数</span><br>        <span class="hljs-keyword">if</span> (_args.length &lt; len) &#123;<br>            <span class="hljs-keyword">return</span> progressCurrying.call(_this, fn, _args);<br>        &#125;<br><br>        <span class="hljs-comment">// 参数收集完毕，则执行fn</span><br>        <span class="hljs-keyword">return</span> fn.apply(<span class="hljs-built_in">this</span>, _args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs lsl"><span class="hljs-comment">// 实现一个add方法，使计算结果能够满足如下预期：</span><br>add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>) = <span class="hljs-number">6</span>;<br>add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)(<span class="hljs-number">4</span>) = <span class="hljs-number">10</span>;<br>add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>)(<span class="hljs-number">4</span>)(<span class="hljs-number">5</span>) = <span class="hljs-number">15</span>;<br><br>function add() &#123;<br>    <span class="hljs-comment">// 第一次执行时，定义一个数组专门用来存储所有的参数</span><br>    var _args = Array.prototype.slice.call(arguments);<br><br>    <span class="hljs-comment">// 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值</span><br>    var _adder = function() &#123;<br>        _args.push(...arguments);<br>        return _adder;<br>    &#125;;<br><br>    <span class="hljs-comment">// 利用toString隐式转换的特性，当最后执行时隐式转换，并计算最终的值返回</span><br>    _adder.toString = function () &#123;<br>        return _args.reduce(function (a, b) &#123;<br>            return a + b;<br>        &#125;);<br>    &#125;<br>    return _adder;<br>&#125;<br><br>add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>)                <span class="hljs-comment">// 6</span><br>add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)(<span class="hljs-number">4</span>)             <span class="hljs-comment">// 10</span><br>add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>)(<span class="hljs-number">4</span>)(<span class="hljs-number">5</span>)          <span class="hljs-comment">// 15</span><br>add(<span class="hljs-number">2</span>, <span class="hljs-number">6</span>)(<span class="hljs-number">1</span>)                <span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cos">const curry = ( fn, arr = []) =&gt; &#123;<br>    <span class="hljs-keyword">return</span> (.<span class="hljs-built_in">..args</span>) =&gt; &#123; <br><br>        <span class="hljs-comment">//判断参数总数是否和fn参数个数相等</span><br>        <span class="hljs-keyword">if</span>([.<span class="hljs-built_in">..arr</span>, .<span class="hljs-built_in">..args</span>].length === fn.length)&#123;<br>            <span class="hljs-keyword">return</span> fn(.<span class="hljs-built_in">..arr</span>, .<span class="hljs-built_in">..args</span>) <span class="hljs-comment">//拓展参数，调用fn</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">return</span> curry(fn,[.<span class="hljs-built_in">..arr</span>, .<span class="hljs-built_in">..args</span>]) <span class="hljs-comment">//迭代，传入现有的所有参数</span><br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs excel">const curry = ( fn, arr = []) =&gt; (...args) <br>=&gt; ( a =&gt; a.length === fn.length<br>  ? fn(...a) <br>  <span class="hljs-symbol">:</span> curry(fn, a))([...arr, ...args]) <br></code></pre></td></tr></table></figure>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>zhaoyingchen</li>
+  <li><strong>本文链接：</strong><a href="http://echozyc.github.io/2020/11/03/jsCon/index.html">http://echozyc.github.io/2020/11/03/jsCon/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img src="">
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+<nav class="nav">
+  
+    <a href="/2020/11/03/design/"><i class="iconfont iconleft"></i>JS design model</a>
+  
+  
+    <a href="/2020/11/03/http/">HTTP and HTTPS<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="13199117988@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: "abcdefg"
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
