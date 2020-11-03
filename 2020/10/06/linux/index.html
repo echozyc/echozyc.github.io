@@ -7,13 +7,26 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>标签 - zhaoyingchen blog</title>
+  <title>Linux 简单命令 - zhaoyingchen blog</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
+  <meta name="description" content="
+
+
+命令
+功能
+
+
+
+pwd
+显示当前目录
+
+
+cd..."> 
   
   <meta name="author" content="zhaoyingchen"> 
 
@@ -106,7 +119,7 @@
 
 <nav class="navbar">
   <div class="left"></div>
-  <div class="center">标签</div>
+  <div class="center">Linux 简单命令</div>
   <div class="right">
     
       <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
@@ -152,15 +165,122 @@
   </div>
 </nav>
   <main id="main">
-  <section class="tags">
-    <header class="header">
-  <h1 class="header-title">标签</h1>
-  <p class="header-subtitle">共: 9 个</p>
-</header>
-    <div class="tags-container">
-      <a href="/tags/git/" style="font-size: 14px; color: #666">git</a> <a href="/tags/js/" style="font-size: 36px; color: #212121">js</a> <a href="/tags/linux/" style="font-size: 14px; color: #666">linux</a> <a href="/tags/promose/" style="font-size: 14px; color: #666">promose</a> <a href="/tags/react/" style="font-size: 25px; color: #444">react</a> <a href="/tags/reactHook/" style="font-size: 14px; color: #666">reactHook</a> <a href="/tags/reactRecoil/" style="font-size: 14px; color: #666">reactRecoil</a> <a href="/tags/vue/" style="font-size: 14px; color: #666">vue</a> <a href="/tags/vue3-0/" style="font-size: 14px; color: #666">vue3.0</a>
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Linux 简单命令</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 06, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>332</span>
     </div>
-  </section>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pwd</td>
+<td>显示当前目录</td>
+</tr>
+<tr>
+<td align="left">cd</td>
+<td>改变所在目录</td>
+</tr>
+<tr>
+<td align="left">touch</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td align="left">rm</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td align="left">vi</td>
+<td>编辑文件</td>
+</tr>
+<tr>
+<td align="left">ls</td>
+<td>查看目录下的内容</td>
+</tr>
+<tr>
+<td align="left">cat</td>
+<td>显示文件的内容</td>
+</tr>
+<tr>
+<td align="left">mv</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td align="left">rmdir</td>
+<td>删除目录</td>
+</tr>
+</tbody></table>
+<h4 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-built_in">print</span> working directory(打印工作目录)<br>输入<span class="hljs-built_in">pwd</span>命令，Linux会输出当前目录<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h4><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><br><span class="hljs-keyword">cd</span> /      转到根目录中 <br><span class="hljs-keyword">cd</span> ~     转到<span class="hljs-string">/home/user</span>用户目录下 <br><span class="hljs-keyword">cd</span> <span class="hljs-string">/usr</span> 转到根目录下的usr目录中<span class="hljs-params">-------------</span>绝对路径 <br><span class="hljs-keyword">cd</span> test 转到当前目录下的test子目录中<span class="hljs-params">-------</span>相对路径<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h4><p>ls命令用来查看目录的内容</p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>zhaoyingchen</li>
+  <li><strong>本文链接：</strong><a href="http://echozyc.github.io/2020/10/06/linux/index.html">http://echozyc.github.io/2020/10/06/linux/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img src="">
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2020/10/22/vue3/"><i class="iconfont iconleft"></i>vue3.0 简单使用</a>
+  
+  
+    <a href="/2020/09/13/reactRecoil/">React Recoil<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
 </main>
   <footer class="footer">
   <div class="footer-social">
