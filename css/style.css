@@ -926,7 +926,7 @@ body ul {
   z-index: 40;
   height: 90vh;
   width: 100%;
-  background-image: url("/images/theme/welcome-image.jpg");
+  background-image: url("https://pic.izhaoo.com/2017071603.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-attachment: fixed;
@@ -942,7 +942,7 @@ body ul {
   padding: 1em;
   font-family: 'Quicksand', 'Vollkorn', serif;
   font-weight: 300;
-  color: #000;
+  color: #917f6b;
   margin: 0;
 }
 @media (max-width: 768px) {
