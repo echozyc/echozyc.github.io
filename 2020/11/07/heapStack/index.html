@@ -7,26 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Linux 简单命令 - zhaoyingchen blog</title>
+  <title>JS 堆栈解析 - zhaoyingchen blog</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
-  <meta name="description" content="
-
-
-命令
-功能
-
-
-
-pwd
-显示当前目录
-
-
-cd..."> 
+  <meta name="description" content="堆栈
+堆栈是一个计算机专用术语，在数据结构里它代表着两..."> 
   
   <meta name="author" content="zhaoyingchen"> 
 
@@ -119,7 +108,7 @@ cd...">
 
 <nav class="navbar">
   <div class="left"></div>
-  <div class="center">Linux 简单命令</div>
+  <div class="center">JS 堆栈解析</div>
   <div class="right">
     
       <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
@@ -169,68 +158,40 @@ cd...">
     <article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="https://pic.izhaoo.com/20200228081718.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2017072104.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">Linux 简单命令</h1>
+    <h1 class="head-title">JS 堆栈解析</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 06, 2020</span
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 07, 2020</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>332</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1143</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">pwd</td>
-<td>显示当前目录</td>
-</tr>
-<tr>
-<td align="left">cd</td>
-<td>改变所在目录</td>
-</tr>
-<tr>
-<td align="left">touch</td>
-<td>创建文件</td>
-</tr>
-<tr>
-<td align="left">rm</td>
-<td>删除文件</td>
-</tr>
-<tr>
-<td align="left">vi</td>
-<td>编辑文件</td>
-</tr>
-<tr>
-<td align="left">ls</td>
-<td>查看目录下的内容</td>
-</tr>
-<tr>
-<td align="left">cat</td>
-<td>显示文件的内容</td>
-</tr>
-<tr>
-<td align="left">mv</td>
-<td>移动文件</td>
-</tr>
-<tr>
-<td align="left">rmdir</td>
-<td>删除目录</td>
-</tr>
-</tbody></table>
-<h4 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-built_in">print</span> working directory(打印工作目录)<br>输入<span class="hljs-built_in">pwd</span>命令，Linux会输出当前目录<br><br></code></pre></td></tr></table></figure>
-
-<h4 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h4><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><br><span class="hljs-keyword">cd</span> /      转到根目录中 <br><span class="hljs-keyword">cd</span> ~     转到<span class="hljs-string">/home/user</span>用户目录下 <br><span class="hljs-keyword">cd</span> <span class="hljs-string">/usr</span> 转到根目录下的usr目录中<span class="hljs-params">-------------</span>绝对路径 <br><span class="hljs-keyword">cd</span> test 转到当前目录下的test子目录中<span class="hljs-params">-------</span>相对路径<br><br></code></pre></td></tr></table></figure>
-
-<h4 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h4><p>ls命令用来查看目录的内容</p>
+        <h3 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h3><blockquote>
+<p>堆栈是一个计算机专用术语，在数据结构里它代表着两种数据的操作方式，在内存维度里代表着两种不同的缓存方式和分配。</p>
+</blockquote>
+<h4 id="数据结构中的堆栈"><a href="#数据结构中的堆栈" class="headerlink" title="数据结构中的堆栈"></a>数据结构中的堆栈</h4><blockquote>
+<p>栈(stack)： 其数据的存取方式是先进后出，<br>举个例子，js中的全局下文栈在运行时是第一个进(push)栈的，在浏览器关闭时成为最后一个出(pop)栈的。其他的函数上下文也是存储在栈中，但是一般都是即进（函数创建）即出（函数执行完毕）的.</p>
+</blockquote>
+<blockquote>
+<p>堆（heap）： 一种经过排序的树形结构(完全二叉树)，通常用来实现优先队列，有小顶堆和大顶堆两种</p>
+</blockquote>
+<h4 id="存储空间中的堆栈（上下文与深浅拷贝）"><a href="#存储空间中的堆栈（上下文与深浅拷贝）" class="headerlink" title="存储空间中的堆栈（上下文与深浅拷贝）"></a>存储空间中的堆栈（上下文与深浅拷贝）</h4><blockquote>
+<p>栈区（栈内存）<br>  首先可以确定的是基本类型都存放在栈区，所以当你在拷贝一个值给另一个变量时，传递的是一个单纯的值，不会再产生任何指向运算。<br>  而当你在声明一个引用类型时，该变量所在的房间里存放的数据实际是一个地址值，该地址指向了内存中的另一块区域——堆区。</p>
+</blockquote>
+<blockquote>
+<p>堆区（堆内存）<br>  当引用类型被浅拷贝时，因为所分配的数据空间是同一块，位于堆中的某一个位置。所以浅拷贝的数据值被所引用的引用类型变量所共同使用，一发则同全身。<br>  而被深拷贝的时候，会根据执行重新分配一块新的内存空间，两个栈上的引用类型的变量指向运算后会指向堆中不同的地址空间。<br>  这样，在我们想要深拷贝的场景中，我们对引用类型拷贝时就不能使用直接赋值这种方式了，而是要重新分配一块空间给被拷贝值。<br>  举个最简单的例子：<br>  function deepCopy(obj) { return JSON.parse(JSON.stringify(obj)); } // 最常用场景使用</p>
+</blockquote>
+<h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><blockquote>
+<p>what？<br>  在某种场景下，对于分配的空间失去控制或者忘记释放，这些空间就属于泄漏掉的内存，在一些严重的递归或者是定时器场景中，内存泄漏会使浏览器内存占用越来越高，影响性能。<br>  why？<br>  为什么会产生内存泄漏，因为那部分空间不能被垃圾回收机制所回收。<br>  release:<br>  将该变量的引用赋值为null或者是将dom对象移除，在被多个对象引用时则都要处理才会释放空间。</p>
+</blockquote>
+<blockquote>
+<p>要去优化内存的时候，不用一定要记什么dom引用js对象，js引用dom对象，或者是计时器对象未被清除，闭包产生泄漏什么的，只需要理解标记清除的原理去分析就可以了，<br>  全局变量全部被标记为window引用，局部随着所在函数上下文出栈而失去引用被即刻释放，如果局部返回一个对象使仍然访问到局部中的某些变量，则这些变量就没有失去引用，自然就会继续占据内存空间。<br>  随着一些场景中对这些返回的对象的需求结束，那么我们就需要释放这些被绑在全局上的对象，则那些被对象所引用的变量的空间也会因为失去引用而被清除标记，随后在浏览器的gc中被回收。</p>
+</blockquote>
 
       </section>
       <section class="extra">
@@ -238,7 +199,7 @@ cd...">
         <ul class="copyright">
   
   <li><strong>本文作者：</strong>zhaoyingchen</li>
-  <li><strong>本文链接：</strong><a href="http://echozyc.github.io/2020/10/06/linux/index.html">http://echozyc.github.io/2020/10/06/linux/index.html</a></li>
+  <li><strong>本文链接：</strong><a href="http://echozyc.github.io/2020/11/07/heapStack/index.html">http://echozyc.github.io/2020/11/07/heapStack/index.html</a></li>
   <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
       rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
   
@@ -256,15 +217,13 @@ cd...">
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
 
         
 <nav class="nav">
   
-    <a href="/2020/10/22/vue3/"><i class="iconfont iconleft"></i>vue3.0 简单使用</a>
   
-  
-    <a href="/2020/09/13/reactRecoil/">React Recoil<i class="iconfont iconright"></i></a>
+    <a href="/2020/11/06/dataStructure/">JS 数据结构<i class="iconfont iconright"></i></a>
   
 </nav>
 
